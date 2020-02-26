@@ -9,7 +9,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 //define the server port
-const port = 3200;
+const port = process.env.PORT || 5000;
 
 //allow this app to receive incoming json request
 app.use(bodyParser.json());
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 //create the homepage root
 app.get("/", (req, res) => {
   //res means response, and it send string "Hello Express!" to the API
-  res.send("Hello Aziz Nur ABdul Qodir!");
+  res.send("Hello Daffa AM");
 });
 
 //when this nodejs app executed, it will listen to defined port
