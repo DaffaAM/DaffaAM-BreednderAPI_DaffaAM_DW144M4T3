@@ -33,6 +33,7 @@ const LoginController = require("./controllers/login");
 const SpeciesController = require("./controllers/species");
 const PetController = require("./controllers/pet");
 const UserController = require("./controllers/user");
+const MatchController = require("./controllers/match");
 
 //GET list route: simply send arr of obj todos your user screen
 app.group("/api/v1", router => {
@@ -49,6 +50,10 @@ app.group("/api/v1", router => {
   router.get("/user/:id", authenticated, UserController.getuser);
   router.patch("/user/:id", authenticated, UserController.updateuser);
   router.delete("/user/:id", authenticated, UserController.deleteuser);
+  router.get("/match", authenticated, MatchController.ChekMat);
+  router.post("/match", authenticated, MatchController.InsertMat);
+  router.patch("/match/:id", MatchController.UpMat);
+  router.get("/matches", MatchController.TrueMat);
 
   // router.get("/todos", authenticated, TodosController.index);
 
