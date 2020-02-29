@@ -5,6 +5,15 @@ require("express-group-routes");
 //use express in app variable
 const app = express();
 
+const cors = require("cors");
+app.use(cors());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  next();
+});
 //init bodyParser
 const bodyParser = require("body-parser");
 
@@ -40,7 +49,7 @@ app.group("/api/v1", router => {
   router.post("/login", LoginController.login);
 
   router.post("/register", RegisController.register);
-  router.get("/species", authenticated, SpeciesController.species);
+  router.get("/species", SpeciesController.species);
   router.post("/species", authenticated, SpeciesController.speciesadd);
   router.post("/pet", authenticated, PetController.Insert);
   router.get("/pet/:id", authenticated, PetController.getdetail);
